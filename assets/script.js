@@ -19,26 +19,26 @@ const slides = [
   ];
   
 // fleche suivant/precedent
-const arrowLeft = document.querySelector('.arrow_left');
-const arrowRight = document.querySelector('.arrow_right');
+const left_arrow = document.querySelector('.arrow_left');
+const right_arrow = document.querySelector('.arrow_right');
 
 // Conteneur dots
-const containerDots = document.querySelector('.dots');
+const dots_div = document.querySelector('.dots');
 
 // Image et texte
 const imagePicture = document.querySelector('.banner-img');
 const text = document.querySelector('p');
   
 // Event click fleche suivant/precedent
-arrowLeft.addEventListener('click', prevSlide);
-arrowRight.addEventListener('click', nextSlide);
+left_arrow.addEventListener('click', silde_back);
+right_arrow.addEventListener('click', slide_next);
   
 // Creation dot conteneur correspondant
 for (let i = 0; i < slides.length; i += 1) {
 const dot = document.createElement('div');
 dot.className = 'dot';
-containerDots.appendChild(dot);
-dot.addEventListener('click', () => {updateCarrouselUI(counter, i)});
+dots_div.appendChild(dot);
+dot.addEventListener('click', () => {carrousel_update(counter, i)});
 }
 
 // Sélection points de navigation
@@ -49,19 +49,19 @@ dots[0].classList.add('dot_selected');
 let counter = 0;
 
 // Fonction precedent
-function nextSlide() {
+function slide_next() {
 const newCounter = counter < slides.length - 1 ? counter + 1 : 0;
-updateCarrouselUI(counter, newCounter);
+carrousel_update(counter, newCounter);
 }
 
 // Fonction suivant
-function prevSlide() {
+function silde_back() {
 const newCounter = counter === 0 ? slides.length - 1 : counter - 1;
-updateCarrouselUI(counter, newCounter);
+carrousel_update(counter, newCounter);
 }
 
 // Update carrousel
-function updateCarrouselUI(oldCounter, newCounter) {
+function carrousel_update(oldCounter, newCounter) {
 counter = newCounter;
 dots[oldCounter].classList.remove('dot_selected');
 imagePicture.src = './assets/images/slideshow/' + slides[newCounter].image;
