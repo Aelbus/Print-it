@@ -1,4 +1,3 @@
-// Tableau Carrousel
 const slides = [
 	{
 	  "image":"slide1.jpg",
@@ -68,4 +67,3 @@ imagePicture.src = './assets/images/slideshow/' + slides[count_add].image;
 text.innerHTML = slides[count_add].tagLine;
 dots[count_add].classList.add('dot_selected');
 }
-  
