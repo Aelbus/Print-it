@@ -38,7 +38,7 @@ for (let i = 0; i < slides.length; i += 1) {
 const dot = document.createElement('div');
 dot.className = 'dot';
 dots_div.appendChild(dot);
-dot.addEventListener('click', () => {carrousel_update(counter, i)});
+dot.addEventListener('click', () => {carrousel_update(count, i)});
 }
 
 // Sélection points de navigation
@@ -46,26 +46,26 @@ const dots = document.querySelectorAll('.dot');
 dots[0].classList.add('dot_selected');
 
 // Initialisation du compteur
-let counter = 0;
+let count = 0;
 
 // Fonction precedent
 function slide_next() {
-const newCounter = counter < slides.length - 1 ? counter + 1 : 0;
-carrousel_update(counter, newCounter);
+const count_add = count < slides.length - 1 ? count + 1 : 0;
+carrousel_update(count, count_add);
 }
 
 // Fonction suivant
 function silde_back() {
-const newCounter = counter === 0 ? slides.length - 1 : counter - 1;
-carrousel_update(counter, newCounter);
+const count_add = count === 0 ? slides.length - 1 : count - 1;
+carrousel_update(count, count_add);
 }
 
 // Update carrousel
-function carrousel_update(oldCounter, newCounter) {
-counter = newCounter;
-dots[oldCounter].classList.remove('dot_selected');
-imagePicture.src = './assets/images/slideshow/' + slides[newCounter].image;
-text.innerHTML = slides[newCounter].tagLine;
-dots[newCounter].classList.add('dot_selected');
+function carrousel_update(old_count, count_add) {
+count = count_add;
+dots[old_count].classList.remove('dot_selected');
+imagePicture.src = './assets/images/slideshow/' + slides[count_add].image;
+text.innerHTML = slides[count_add].tagLine;
+dots[count_add].classList.add('dot_selected');
 }
   
