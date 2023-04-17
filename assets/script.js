@@ -42,10 +42,10 @@ for (let i = 0; i < slides.length; i++) {
 
 }
 // _________________EXPLICATION DE LA BOUCLE (condition)
-// "let i" : crée une variable appelée "i" en utilisant le mot-clé let. 
-// "i = 0" : affecte la valeur 0 à la variable i en tant qu'initialisation de la boucle.
+// "let i" : crée une variable appelée "i"  
+// "i = 0" : affecte la valeur 0 à la variable i en tant qu'initialisation de la boucle
 // "i < slides.length" : vérifie si la variable "i" est inférieure à la longueur de la variable "slides" 
-// "i++" : est un raccourci pour ajouter 1 à la valeur de "i" à chaque itération de la boucle. 
+// "i++" : est un raccourci pour ajouter 1 à la valeur de "i" à chaque itération de la boucle 
 
 // Sélection points de navigation
 const dots = document.querySelectorAll(".dot")
@@ -75,12 +75,12 @@ function slide_next() {
 }
 // Fonction suivant
 function silde_back() {
-	let count_add;
+	let count_add
 	if (count === 0) {
-  	count_add = slides.length - 1;
+  	count_add = slides.length - 1
 	} 
 	else {
-	count_add = count - 1;
+	count_add = count - 1
 	}
 	carrousel_update(count, count_add)
 }
