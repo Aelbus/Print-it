@@ -19,69 +19,63 @@ const slides = [
 ]
 
 // Fleche Gauche/Droite
-const left_arrow = document.querySelector(".arrow_left")
-const right_arrow = document.querySelector(".arrow_right")
+const left_arrow = document.querySelector(".arrow_left");
+const right_arrow = document.querySelector(".arrow_right");
 
 // Division des dots
-const dots_div = document.querySelector(".dots")
+const dots_div = document.querySelector(".dots");
 
 // Image et texte slide carrousel
-const slide_img = document.querySelector(".banner-img")
-const slide_p = document.querySelector("p")
+const slide_img = document.querySelector(".banner-img");
+const slide_p = document.querySelector("p");
 
-// Evenement auc Clique des fléches
-left_arrow.addEventListener("click", silde_back) 								// appelle la fonction fleche (slide back)
-right_arrow.addEventListener("click", slide_next) 								// appelle la fonction fleche (slide next)
+// Evenement au Clique des fléches
+left_arrow.addEventListener("click", silde_back);							
+right_arrow.addEventListener("click", slide_next);								
 
 // Boucle qui crée les dots 
 for (let i = 0; i < slides.length; i++) {
-	const dot = document.createElement("div") 									// crée un point de navigation "dot"
-	dot.className = "dot" 														// applique le CSS au "dot"
-	dots_div.appendChild(dot) 													// ajoute le dot a la div des dots dans le HTML en tant que enfant 
-	dot.addEventListener('click', () => { carrousel_update (count, i) } ) 		// appelle la fonction carrousel update pour rendre les dots cliquable
+	const dot = document.createElement("div"); 									
+	dot.className = "dot";														
+	dots_div.appendChild(dot);												 
+	dot.addEventListener('click', () => { carrousel_update (count, i) } );		
 
 }
-																				// _________________EXPLICATION DE LA BOUCLE (condition)
-																				// "let i" : cree une variable appeler "i"  (index/indice de base)
-																				// "i = 0" : valeur 0 à la variable i en tant qu'initialisation de la boucle
-																				// "i < slides.length" : verif si "i" inferieur à la longueur de "slides" 
-																				// "i++" :  ajoute 1 a "i" a chaque repetition de boucle 
-
 // Sélection points de navigation
-const dots = document.querySelectorAll(".dot")
-dots[0].classList.add("dot_selected")
+const dots = document.querySelectorAll(".dot");
+dots[0].classList.add("dot_selected");											
 
-// Variable pour suivre l'index des slide du carrousel
-let count = 0
+// Variable pour suivre l'index des slide du carrousel							
+let count = 0;
 
 //  fonction changement de slide carrousel
-function carrousel_update(old_count, count_add) { 								//met a jour l'affichage du carrousel 
-	count = count_add
-	dots[old_count].classList.remove("dot_selected") 		
-	slide_img.src = "./assets/images/slideshow/" + slides[count_add].image
-	slide_p.innerHTML = slides[count_add].tagLine
-	dots[count_add].classList.add("dot_selected")
+function carrousel_update(old_count, count_add) { 								l 
+	count = count_add;
+	dots[old_count].classList.remove("dot_selected");
+	slide_img.src = "./assets/images/slideshow/" + slides[count_add].image;
+	slide_p.innerHTML = slides[count_add].tagLine;
+	dots[count_add].classList.add("dot_selected");
 }
 
-// Fonction precedent
+// Fonction suivant
 function slide_next() {
 	let count_add;
-	if (count < slides.length - 1) { 											// test si count est inferieur a la longueur du tableau slides moins 1
-  	count_add = count + 1 														// affiche la diapo suivante
+	if (count < slides.length - 1) { 											
+  	count_add = count + 1; 														
 	} 
 	else {
-  	count_add = 0  																// assigne la valeur 0 à la variable count_add
+  	count_add = 0; 																
 	}
-	carrousel_update(count, count_add) 											// appelle la fonction (carrousel_update) 
+	carrousel_update(count, count_add);											
 }
-// Fonction suivant
+// Fonction precedent
 function silde_back() {
-	let count_add 
-	if (count === 0) { 															// test si l'indice actuel est egal a 0
-  	count_add = slides.length - 1   											// affiche la dernière diapositive 
+	let count_add; 
+	if (count === 0) { 															
+  	count_add = slides.length - 1;   											
 	} 
 	else {
-	count_add = count - 1 														// afficher la diapo precedente
+	count_add = count - 1 ;														
 	}
-	carrousel_update(count, count_add) 											// appelle la fonction (carrousel_update)
+	carrousel_update(count, count_add);											
 }
