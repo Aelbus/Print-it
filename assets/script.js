@@ -49,7 +49,7 @@ dots[0].classList.add("dot_selected");
 let count = 0;
 
 //  fonction changement de slide carrousel
-function carrousel_update(old_count, count_add) { 								l 
+function carrousel_update(old_count, count_add) { 								
 	count = count_add;
 	dots[old_count].classList.remove("dot_selected");
 	slide_img.src = "./assets/images/slideshow/" + slides[count_add].image;
